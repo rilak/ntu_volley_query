@@ -37,10 +37,28 @@ def send_query(date, place):
     
     return records
 
-def QueryOneDay(day, place):
+def query_one_day(day, place):
     records  = send_query(day, place)
     day_text = f"{day.month}/{day.day}"
     for r in records:
         if day_text in r.day:
             return r
     return None
+
+def query_one_week(day, place):
+    return send_query(day, place)
+
+def query_recent_7_days(start_day, place):
+    if start_day.weekday() == 6:      #剛好一整週
+        return send_query(day, place)
+
+
+    days = []
+    for i in range(7):
+        date = start_day + datetime.timedelta(days=i)
+        days.append( f"{date.month}/{date.day}" )
+
+    end_day = start_day + datetime.timedelta(days=i)
+    records = send_query(start_day, place) + send_query(end_day, place)
+    records = [r for r in records if r.day[:-3] in days]
+    return records
