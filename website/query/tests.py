@@ -1,7 +1,7 @@
 import unittest
 import datetime
 
-import query
+from query import query
 
 record_6_29 = ["105資工所女子排球隊",
                "105資工所女子排球隊",
