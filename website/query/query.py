@@ -50,7 +50,7 @@ def query_one_week(day, place):
 
 def query_recent_7_days(start_day, place):
     if start_day.weekday() == 6:      #剛好一整週
-        return send_query(day, place)
+        return send_query(start_day, place)
 
 
     days = []

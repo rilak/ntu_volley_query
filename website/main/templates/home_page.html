@@ -11,41 +11,6 @@
     </head>
 <body>
     <h1>{{ big_title }}</h1>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th> # </th>
-                    {% for day in days %}
-                        <th colspan="4"> {{ day }} </th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"> 場地 </th>
-                    {% for day in days %}
-                        <td>場四</td><td>場五</td><td>場六</td><td>場七</td>
-                    {% endfor %}
-                </tr>
-
-                {% for p in place %}
-                    {% for state in p %}
-                        {% if forloop.first %}
-                            <th scope="row">  {{ state }} </th>
-                        {% else %}
-                            {% if state == 0 %}
-                                <td> &nbsp; </td>
-                            {% elif state == 1 %}
-                                <td class="info">  &nbsp; </td>
-                            {% else %}
-                                <td class="danger">  &nbsp; </td>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                    </tr>
-                {% endfor %}
-            </tbody>
-
-        </table>
+        {{ table |safe}}
 </body>
 </html>
