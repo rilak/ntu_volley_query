@@ -27,7 +27,7 @@ def get_record_table():
     today = datetime.date.today()
     records = []
     for i in range(4, 8):
-        records.append(query.query_recent_7_days(today, i))
+        records.append(query.query_one_week(today, i))
 
     html = ["""<table class="table table-bordered table-responsive">
         <thead>
@@ -69,7 +69,7 @@ def get_record_table():
 
 def home_page(request):
     return render(request, 'home_page.html', {
-            "big_title" : get_recent_7_days_range_str(),
+            "big_title" : get_this_week_range_str(),
             "table" : get_record_table(),
         })
 
