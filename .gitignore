@@ -3,3 +3,5 @@ db.sqlite3
 *.pyc
 geckodriver.log
 *.ipynb
+venv
+.env
