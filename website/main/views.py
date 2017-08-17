@@ -3,6 +3,11 @@ from query import query
 
 import datetime
 
+def get_recent_7_days_range_str():
+    day0 = datetime.date.today()
+    day6 = day0 + datetime.timedelta(days = 6)
+    return f"{day0.month}/{day0.day}~{day6.month}/{day6.day}"
+
 def get_this_week_range_str():
     today = datetime.date.today()
     weekday = (today.weekday()+1)%7
@@ -64,6 +69,8 @@ def get_record_table():
 
 def home_page(request):
     return render(request, 'home_page.html', {
-            "big_title" : get_this_week_range_str(),
+            "big_title" : get_recent_7_days_range_str(),
             "table" : get_record_table(),
         })
+
+
